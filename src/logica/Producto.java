@@ -2,9 +2,30 @@ package logica;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Producto {
-//     private ArrayList<Articulo> Lista = new ArrayList();
+
+    private static ArrayList<Articulo> lista = new ArrayList();
+
+    public ArrayList<Articulo> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Articulo> Lista) {
+        this.lista = lista;
+    }
+
+    public static void main(String[] args) {  //ESTAS SON PRUEBAS
+        Articulo articulo1 = new Articulo(1, "hola", 3, 4);
+        lista.add(articulo1);
+        if (pertenece(articulo1)) {
+            System.out.println("pertenece");
+        }
+        System.out.println(buscarArticulo(1).toString());
+        System.out.println(buscarArticulo(2));
+        System.out.println(articulo1.toString());
+    }
 //    
 //    Articulo art = new Articulo();
 //    
@@ -29,19 +50,35 @@ public class Producto {
 //    }
 //
 //}
-//
-//    
-//    Scanner entrada = new Scanner(System.in);
-//
-//    public void buscar(int codigo) {
-//        
-//        Scanner busc = new Scanner(System.in);
-//        System.out.println("Ingrese el codigo del articulo que desea buscar");
-//        int buscart = busc.nextInt();
-//        for (int x = 0; x < Lista.size(); x++) {
-//            
-//            }
-//        }
-  }
-//
+    public static boolean pertenece(Articulo art) {
+        return lista.contains(art);
+    }
 
+    public void eliminarArticulo(Articulo art) {
+        if (pertenece(art)) {
+            lista.remove(art);
+        } else {
+            System.out.println("Articulo inexistente");//USAR JOptionPanel
+        }
+    }
+
+    public void añadirArticulo(Articulo art) {
+        if (!pertenece(art)) {
+            lista.add(art);
+
+        } else {
+            System.out.println("Este articulo ya existe"); //JOptionPanel
+        }
+    }
+
+    public static Articulo buscarArticulo(int codigo) {   //TERMINAR METODO BUSCAR ARTICULO Y SACAR EL STATIC
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCodigo() == codigo) { 
+                return lista.get(i);                                 //probar lo del break
+            }
+            
+        }
+        return null;
+    }
+
+}

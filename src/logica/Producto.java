@@ -1,30 +1,32 @@
 package logica;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 
 public class Producto {
-
-    private static ArrayList<Articulo> lista = new ArrayList();
+//SACAR TODOS LOS STATIC Y EL MAIN
+    private static ArrayList<Articulo> lista = new ArrayList(); //guarda articulos que tiene el supermercado
 
     public ArrayList<Articulo> getLista() {
         return lista;
     }
 
-    public void setLista(ArrayList<Articulo> Lista) {
+    public void setLista(ArrayList<Articulo> lista) {
         this.lista = lista;
     }
 
     public static void main(String[] args) {  //ESTAS SON PRUEBAS
-        Articulo articulo1 = new Articulo(1, "hola", 3, 4);
-        lista.add(articulo1);
-        if (pertenece(articulo1)) {
-            System.out.println("pertenece");
-        }
-        System.out.println(buscarArticulo(1).toString());
+        Articulo articulo1 = new Articulo(1, "nombre", 3, 4);
+        Articulo articulo2 = new Articulo(1, "nombre", 3, 4);
+        añadirArticulo(articulo1);
+        System.out.println("X");
+        añadirArticulo(articulo2);
+        System.out.println("x");
+        System.out.println(buscarArticulo(1));
         System.out.println(buscarArticulo(2));
-        System.out.println(articulo1.toString());
+        Importado i= new Importado();    //creacion articulo importado
+        añadirArticulo(i);
+        System.out.println(buscarArticulo(12));
     }
 //    
 //    Articulo art = new Articulo();
@@ -50,10 +52,18 @@ public class Producto {
 //    }
 //
 //}
-    public static boolean pertenece(Articulo art) {
-        return lista.contains(art);
+//    public static boolean pertenece(Articulo art) {  //es static porque es PRUEBA en main
+//        return lista.contains(art);
+//    }
+    public static boolean pertenece(Articulo a){
+        for(int i=0;i<lista.size();i++){
+            if(lista.get(i).getCodigo()==a.getCodigo()){
+                return true;
+            }
+        }
+        return false;
     }
-
+    
     public void eliminarArticulo(Articulo art) {
         if (pertenece(art)) {
             lista.remove(art);
@@ -62,23 +72,28 @@ public class Producto {
         }
     }
 
-    public void añadirArticulo(Articulo art) {
+    public static void añadirArticulo(Articulo art) {
         if (!pertenece(art)) {
             lista.add(art);
-
         } else {
             System.out.println("Este articulo ya existe"); //JOptionPanel
         }
     }
 
     public static Articulo buscarArticulo(int codigo) {   //TERMINAR METODO BUSCAR ARTICULO Y SACAR EL STATIC
+     
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getCodigo() == codigo) { 
-                return lista.get(i);                                 //probar lo del break
+                return lista.get(i);
             }
             
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + '}';
     }
 
 }

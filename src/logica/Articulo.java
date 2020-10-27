@@ -10,6 +10,8 @@ public class Articulo {
     private int unidades;
 
 //Construcores
+    public Articulo() {
+    }
     public Articulo(int codigo, String nombre, double precioCosto, int unidades) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -55,6 +57,11 @@ public class Articulo {
 
         double precioVenta = precioCosto * (100 / 100 - (precioCosto * 0.2));
         return precioVenta;
+    }
+
+    @Override
+    public String toString() {
+        return "Articulo:" + "codigo: " + codigo + ", nombre: " + nombre + ", precioCosto: " + precioCosto + ", unidades: " + unidades;
     }
 
 }

@@ -1,7 +1,6 @@
 
 package logica;
 
-
 public class Importado extends Articulo {
     private int  añoimportacion;
     private double impuesto;
@@ -10,6 +9,12 @@ public class Importado extends Articulo {
         super(codigo, nombre, precioCosto, unidades);
         this.añoimportacion = añoimportacion;
         this.impuesto = impuesto;
+    }
+
+    public Importado() {    //PRUEBA
+        super(12,"hola",3,5);
+        this.añoimportacion=2003;
+        this.impuesto= 3.2;
     }
 
     public int getAñoimportacion() {

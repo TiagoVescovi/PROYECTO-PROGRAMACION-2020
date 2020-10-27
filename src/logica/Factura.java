@@ -1,27 +1,20 @@
 
 package logica;
 
+import java.util.ArrayList;
+
 public class Factura {
-    private Producto venta;
     private Fecha realizada;
     private Empleado vendedor;
     private Cliente comprador;
+    private static final ArrayList<Articulo> listaFactura = new ArrayList(); //guarda articulos comprados
 
     public Factura(Producto venta, Fecha realizada, Empleado vendedor, Cliente comprador) {
-        this.venta = venta;
         this.realizada = realizada;
         this.vendedor = vendedor;
         this.comprador = comprador;
     }
-
-    public Producto getVenta() {
-        return venta;
-    }
-
-    public void setVenta(Producto venta) {
-        this.venta = venta;
-    }
-
+    
     public Fecha getRealizada() {
         return realizada;
     }
@@ -45,6 +38,22 @@ public class Factura {
     public void setComprador(Cliente comprador) {
         this.comprador = comprador;
     }
-    
-    
+    public boolean pertenece(Articulo a){
+        for(int i=0;i<listaFactura.size();i++){
+            if(listaFactura.get(i).getCodigo()==a.getCodigo()){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void añadirArticulo(Articulo art) {
+        if (!pertenece(art)) {
+            listaFactura.add(art);
+        } else {
+            System.out.println("Este articulo ya existe"); //JOptionPanel
+        }
+    }
+    public void eliminarFactura(){
+        listaFactura.clear();
+    }
 }

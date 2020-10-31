@@ -6,12 +6,18 @@ public class Fecha {
     private int dia;
     private int año;
 
+    public Fecha(int dia, int mes, int año) {
+        this.mes = mes;
+        this.dia = dia;
+        this.año = año;
+    }
+     
     public int getMes() {
         return mes;
     }
 
     public void setMes(int mes) {
-        this.mes = mes;
+        this.mes =  mes;
     }
 
     public int getDia() {
@@ -28,5 +34,9 @@ public class Fecha {
 
     public void setAño(int año) {
         this.año = año;
+    }
+    
+    public String toString() {
+        return dia+"/"+mes+"/"+año;
     }
 }

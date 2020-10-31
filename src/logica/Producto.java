@@ -15,19 +15,8 @@ public class Producto {
         this.lista = lista;
     }
 
-    public static void main(String[] args) {  //ESTAS SON PRUEBAS
-        Articulo articulo1 = new Articulo(1, "nombre", 3, 4);
-        Articulo articulo2 = new Articulo(1, "nombre", 3, 4);
-        añadirArticulo(articulo1);
-        System.out.println("X");
-        añadirArticulo(articulo2);
-        System.out.println("x");
-        System.out.println(buscarArticulo(1));
-        System.out.println(buscarArticulo(2));
-        Importado i= new Importado();    //creacion articulo importado
-        añadirArticulo(i);
-        System.out.println(buscarArticulo(12));
-    }
+   
+    
 //    
 //    Articulo art = new Articulo();
 //    

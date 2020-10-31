@@ -1,28 +1,22 @@
-
+ 
 package logica;
 
 public class Importado extends Articulo {
-    private int  añoimportacion;
+    private int  añoImportacion;
     private double impuesto;
 
-    public Importado(int añoimportacion, double impuesto, int codigo, String nombre, double precioCosto, int unidades) {
+    public Importado(int añoImportacion, double impuesto, int codigo, String nombre, double precioCosto, int unidades) {
         super(codigo, nombre, precioCosto, unidades);
-        this.añoimportacion = añoimportacion;
+        this.añoImportacion = añoImportacion;
         this.impuesto = impuesto;
     }
 
-    public Importado() {    //PRUEBA
-        super(12,"hola",3,5);
-        this.añoimportacion=2003;
-        this.impuesto= 3.2;
-    }
-
     public int getAñoimportacion() {
-        return añoimportacion;
+        return añoImportacion;
     }
 
     public void setAñoimportacion(int añoimportacion) {
-        this.añoimportacion = añoimportacion;
+        this.añoImportacion = añoimportacion;
     }
 
     public double getImpuesto() {
@@ -35,7 +29,7 @@ public class Importado extends Articulo {
     
     @Override
     public double precioVenta() {
-        if (añoimportacion <=2008) {
+        if (añoImportacion <=2008) {
             return super.precioVenta() + (super.precioVenta() * 0.80);
         }else {
             return super.precioVenta() + (super.precioVenta() * 1.00);

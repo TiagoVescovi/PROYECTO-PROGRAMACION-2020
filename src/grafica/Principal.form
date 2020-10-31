@@ -54,10 +54,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="1" pref="150" max="32767" attributes="0"/>
-                              <Component id="jButton3" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnGenerarFactura" alignment="0" max="32767" attributes="0"/>
+                              <Component id="registroEmpleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ingresoArticulo" alignment="1" pref="150" max="32767" attributes="0"/>
+                              <Component id="registroCliente" alignment="1" max="32767" attributes="0"/>
+                              <Component id="generarFactura" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -67,6 +67,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
+                          <Component id="salir" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -81,41 +85,52 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="registroCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnGenerarFactura" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <Component id="ingresoArticulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="registroEmpleado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="generarFactura" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="salir" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="ingresoArticulo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresar Art&#xed;culo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoArticuloActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="registroEmpleado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registro Empleados"/>
+            <Property name="text" type="java.lang.String" value="Registrar Empleados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroEmpleadoActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="registroCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registro Cliente"/>
+            <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroClienteActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnGenerarFactura">
+        <Component class="javax.swing.JButton" name="generarFactura">
           <Properties>
             <Property name="text" type="java.lang.String" value="GENERAR FACTURA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generarFacturaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -129,6 +144,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Por favor, de click en la acci&#xf3;n que desea realizar"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="salir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

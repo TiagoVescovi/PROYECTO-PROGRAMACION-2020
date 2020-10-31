@@ -11,6 +11,8 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         p=new Producto();
+        this.setTitle("Menu Principal");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -23,12 +25,13 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btnGenerarFactura = new javax.swing.JButton();
+        ingresoArticulo = new javax.swing.JButton();
+        registroEmpleado = new javax.swing.JButton();
+        registroCliente = new javax.swing.JButton();
+        generarFactura = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
@@ -36,23 +39,45 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setForeground(new java.awt.Color(204, 255, 204));
 
-        jButton1.setText("Ingresar Artículo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ingresoArticulo.setText("Ingresar Artículo");
+        ingresoArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ingresoArticuloActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Registro Empleados");
+        registroEmpleado.setText("Registrar Empleados");
+        registroEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroEmpleadoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Registro Cliente");
+        registroCliente.setText("Registrar Cliente");
+        registroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroClienteActionPerformed(evt);
+            }
+        });
 
-        btnGenerarFactura.setText("GENERAR FACTURA");
+        generarFactura.setText("GENERAR FACTURA");
+        generarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarFacturaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Frank Ruhl Hofshi", 2, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO AL PROGRAMA DEL SUPERMERCADO");
 
         jLabel2.setText("Por favor, de click en la acción que desea realizar");
+
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,16 +88,19 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(227, 227, 227)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGenerarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(registroEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ingresoArticulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(registroCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(generarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(salir)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,14 +111,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addGap(48, 48, 48)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(registroCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(btnGenerarFactura)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addComponent(ingresoArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registroEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(generarFactura)
+                .addGap(34, 34, 34)
+                .addComponent(salir)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,9 +137,33 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ingresoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoArticuloActionPerformed
+        IngresoArticulo ingresoarticulo=new IngresoArticulo();
+        ingresoarticulo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ingresoArticuloActionPerformed
+
+    private void registroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroClienteActionPerformed
+        RegistroCliente registrocliente=new RegistroCliente();
+        registrocliente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registroClienteActionPerformed
+
+    private void registroEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoActionPerformed
+        RegistroEmpleado registroempleado=new RegistroEmpleado();
+        registroempleado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registroEmpleadoActionPerformed
+
+    private void generarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaActionPerformed
+        GenerarFactura generarfactura=new GenerarFactura();
+        generarfactura.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_generarFacturaActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,12 +201,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGenerarFactura;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton generarFactura;
+    private javax.swing.JButton ingresoArticulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton registroCliente;
+    private javax.swing.JButton registroEmpleado;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

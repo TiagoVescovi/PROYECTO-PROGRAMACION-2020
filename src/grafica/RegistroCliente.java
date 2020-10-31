@@ -4,20 +4,27 @@
  * and open the template in the editor.
  */
 package grafica;
-
+import java.util.ArrayList;
+import logica.Cliente;
 /**
  *
  * @author Tiago
  */
 public class RegistroCliente extends javax.swing.JFrame {
-
+    public static ArrayList<Cliente> datosClientes=new ArrayList();
+    private int posicion0=0;
+    
     /**
      * Creates new form RegistroCliente
      */
     public RegistroCliente() {
         initComponents();
+        this.setTitle("Registrar Cliente");
+        this.setLocationRelativeTo(null);
+        
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,17 +35,24 @@ public class RegistroCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        textoCI = new javax.swing.JTextField();
+        textoApellido = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnIngresarArticulo = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        preferencialCheckBox = new javax.swing.JCheckBox();
+        registroClienteVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+
+        textoCI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoCIActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Apellido:");
 
@@ -54,34 +68,50 @@ public class RegistroCliente extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Preferencial");
+        preferencialCheckBox.setText("Preferencial");
+        preferencialCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preferencialCheckBoxActionPerformed(evt);
+            }
+        });
+
+        registroClienteVolver.setText("Volver");
+        registroClienteVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroClienteVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnIngresarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnIngresarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(jLabel1)))
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                                    .addComponent(jTextField4)))))
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel1)))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(textoCI, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(textoApellido)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jLabel5))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(preferencialCheckBox))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(registroClienteVolver)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -91,17 +121,19 @@ public class RegistroCliente extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(62, 62, 62)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addComponent(preferencialCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(btnIngresarArticulo)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registroClienteVolver)
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,8 +151,38 @@ public class RegistroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
+        boolean preferencial;
+        if(preferencialCheckBox.isSelected()){
+            preferencial=true;
+        }else{
+            preferencial=false;
+        }       
+        String CI=textoCI.getText();
+        String apellido=textoApellido.getText();
+        Cliente nuevoCliente=new Cliente(preferencial,CI,apellido);
+        datosClientes.add(nuevoCliente);
+      
 
+
+    
+        System.out.println(datosClientes.toString());
+        
+        
     }//GEN-LAST:event_btnIngresarArticuloActionPerformed
+
+    private void textoCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCIActionPerformed
+        
+    }//GEN-LAST:event_textoCIActionPerformed
+
+    private void registroClienteVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroClienteVolverActionPerformed
+        Principal principal=new Principal();
+        principal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registroClienteVolverActionPerformed
+
+    private void preferencialCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferencialCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preferencialCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,12 +221,13 @@ public class RegistroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresarArticulo;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JCheckBox preferencialCheckBox;
+    private javax.swing.JButton registroClienteVolver;
+    private javax.swing.JTextField textoApellido;
+    private javax.swing.JTextField textoCI;
     // End of variables declaration//GEN-END:variables
 }

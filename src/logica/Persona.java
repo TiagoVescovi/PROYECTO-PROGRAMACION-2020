@@ -2,8 +2,8 @@
 package logica;
 
 public class Persona {
-    private String CI;
-    private String apellido;
+    public String CI;
+    public String apellido;
 
     public Persona(String CI, String apellido) {
         this.CI = CI;

@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/RegistroEmpleado.java</file>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/Principal.java</file>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/IngresoArticulo.java</file>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/Factura.java</file>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/GenerarFactura.java</file>
-            <file>file:/C:/Users/Tiago/Desktop/TRABAJOS%20DE%20UTU/PROGRAMACION/PROYECTO%202020/PROYECTO-PROGRAMACION-2020/src/grafica/RegistroCliente.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/RegistroCliente.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Empleado.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Cliente.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Importado.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/IngresoArticulo.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/MostrarFactura.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Articulo.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Nacional.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/GenerarFactura.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Fecha.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Factura.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/logica/Producto.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/Principal.java</file>
+            <file>file:/C:/Users/franc/Documents/NetBeansProjects/PROYECTO-PROGRAMACION-2020/src/grafica/RegistroEmpleado.java</file>
         </group>
     </open-files>
 </project-private>

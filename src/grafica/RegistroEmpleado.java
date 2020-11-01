@@ -192,34 +192,36 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
-        String calculoDia="0";
-        String calculoMes="0";
-        int dia=Integer.parseInt(ingresoDiaTexto.getText());
-        int mes=Integer.parseInt(ingresoMesTexto.getText());
-        int año=Integer.parseInt(ingresoAñoTexto.getText());
-        Fecha ingreso=new Fecha(dia,mes,año);
-        if(dia<10){
-            calculoDia="0"+dia;
-        }else{
-            calculoDia=String.valueOf(dia);
-        }
-        if(mes<10){
-            calculoMes="0"+mes;
-        }else{
-            calculoMes=String.valueOf(mes);
-        }
-        String antiguedadCalculo=calculoDia+"/"+calculoMes+"/"+año;
-        DateTimeFormatter date=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaingreso=LocalDate.parse(antiguedadCalculo, date);
-        LocalDate fechaactual=LocalDate.now();
-        Period periodo=Period.between(fechaingreso, fechaactual);
-        String antiguedad=(periodo.getYears()+" años, "+periodo.getMonths()+" meses y "+periodo.getDays()+" días");       
-        int categoria=Integer.parseInt(categoriaTexto.getText());
-        String CI=CITexto.getText();
-        String apellido=apellidoTexto.getText();
-        Empleado nuevoEmpleado=new Empleado(ingreso,categoria,antiguedad,CI,apellido);
-        datosEmpleado.add(nuevoEmpleado);
-        System.out.println(datosEmpleado.toString());
+        
+
+//        String calculoDia="0";
+//        String calculoMes="0";
+//        int dia=Integer.parseInt(ingresoDiaTexto.getText());
+//        String mes=Integer.parseInt(ingresoMesTexto.getText());
+//        int año=Integer.parseInt(ingresoAñoTexto.getText());
+//        Fecha ingreso=new Fecha(dia,mes,año);
+//        if(dia<10){
+//            calculoDia="0"+dia;
+//        }else{
+//            calculoDia=String.valueOf(dia);
+//        }
+//        if(mes<10){
+//            calculoMes="0"+mes;
+//        }else{
+//            calculoMes=String.valueOf(mes);
+//        }
+//        String antiguedadCalculo=calculoDia+"/"+calculoMes+"/"+año;
+//        DateTimeFormatter date=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        LocalDate fechaingreso=LocalDate.parse(antiguedadCalculo, date);
+//        LocalDate fechaactual=LocalDate.now();
+//        Period periodo=Period.between(fechaingreso, fechaactual);
+//        String antiguedad=(periodo.getYears()+" años, "+periodo.getMonths()+" meses y "+periodo.getDays()+" días");       
+//        int categoria=Integer.parseInt(categoriaTexto.getText());
+//        String CI=CITexto.getText();
+//        String apellido=apellidoTexto.getText();
+//        Empleado nuevoEmpleado=new Empleado(ingreso,categoria,antiguedad,CI,apellido);
+//        datosEmpleado.add(nuevoEmpleado);
+//        System.out.println(datosEmpleado.toString());
     }//GEN-LAST:event_btnIngresarArticuloActionPerformed
 
     private void registroEmpleadoVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoVolverActionPerformed

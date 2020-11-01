@@ -2,21 +2,21 @@
 package logica;
 
 public class Fecha {
-    private int mes;
+    private String mes;
     private int dia;
     private int año;
 
-    public Fecha(int dia, int mes, int año) {
+    public Fecha(int dia, String mes, int año) {
         this.mes = mes;
         this.dia = dia;
         this.año = año;
     }
      
-    public int getMes() {
+    public String getMes() {
         return mes;
     }
 
-    public void setMes(int mes) {
+    public void setMes(String mes) {
         this.mes =  mes;
     }
 

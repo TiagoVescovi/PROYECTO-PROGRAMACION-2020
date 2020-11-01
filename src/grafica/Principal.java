@@ -1,5 +1,7 @@
 package grafica;
 
+import java.util.ArrayList;
+import logica.Cliente;
 import logica.Producto;
 
 public class Principal extends javax.swing.JFrame {
@@ -7,7 +9,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    private Producto p;
+    public Producto p;
+    public ArrayList<Cliente> listaCliente = new ArrayList();
     public Principal() {
         initComponents();
         p=new Producto();
@@ -138,7 +141,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoArticuloActionPerformed
-        IngresoArticulo ingresoarticulo=new IngresoArticulo();
+        IngresoArticulo ingresoarticulo=new IngresoArticulo(p);
         ingresoarticulo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ingresoArticuloActionPerformed
@@ -156,7 +159,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_registroEmpleadoActionPerformed
 
     private void generarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaActionPerformed
-        GenerarFactura generarfactura=new GenerarFactura();
+        GenerarFactura generarfactura=new GenerarFactura(p);
         generarfactura.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_generarFacturaActionPerformed

@@ -2,42 +2,13 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup5">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup6">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup7">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup8">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup9">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup10">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup11">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup12">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup13">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup14">
+    <Component class="javax.swing.ButtonGroup" name="btnGroupNacImp">
     </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[300, 500]"/>
-    </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[500, 575]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -83,24 +54,19 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="unidadesTexto" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="codigoTexto" max="32767" attributes="0"/>
-                                      <Component id="nombreTexto" alignment="1" pref="81" max="32767" attributes="0"/>
-                                      <Component id="precioCostoTexto" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabelUnidades" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="unidadesTexto" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextFieldCodigo" max="32767" attributes="0"/>
+                              <Component id="JTextFieldNombre" alignment="1" pref="81" max="32767" attributes="0"/>
+                              <Component id="jTextFieldCost" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -121,42 +87,49 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                  <Component id="panelImportadoCheckBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="panelNacionalCheckBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="checkBoxImportado" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="checkBoxNacional" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="jLabelTitulo" min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nombreTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigoTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="precioCostoTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldCost" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="unidadesTexto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelUnidades" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="panelImportadoCheckBox" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelNacionalCheckBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkBoxImportado" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkBoxNacional" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -174,41 +147,44 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="nombreTexto">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="unidades disponibles:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="precio costo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="codigoTexto">
-        </Component>
-        <Component class="javax.swing.JTextField" name="precioCostoTexto">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="nombre:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="c&#xf3;digo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="unidadesTexto">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="jLabelTitulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gill Sans Nova Cond XBd" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="INGRESE LAS CARACTER&#xcd;STICAS DEL ART&#xcd;CULO"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelNombre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="nombre:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTextFieldNombre">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTextFieldNombreActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelCodigo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="c&#xf3;digo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldCodigo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelPrecio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="precio costo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldCost">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelUnidades">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="unidades disponibles:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="unidadesTexto">
         </Component>
         <Component class="javax.swing.JButton" name="btnIngresarArticulo">
           <Properties>
@@ -226,11 +202,31 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoArticuloVolverActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JCheckBox" name="checkBoxImportado">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Importado"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxImportadoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="checkBoxNacional">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nacional"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxNacionalActionPerformed"/>
+          </Events>
+        </Component>
         <Container class="javax.swing.JPanel" name="panelImportado">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[188, 103]"/>
             </Property>
+            <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
 
           <Layout>
@@ -259,7 +255,7 @@
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="añoImportadoTexto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="impuestoTexto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -287,6 +283,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelNacional">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -341,22 +342,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JCheckBox" name="panelImportadoCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Importado"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="panelImportadoCheckBoxActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="panelNacionalCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nacional"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="panelNacionalCheckBoxActionPerformed"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

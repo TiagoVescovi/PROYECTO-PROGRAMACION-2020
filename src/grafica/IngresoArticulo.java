@@ -5,27 +5,30 @@
  */
 package grafica;
 
-import java.util.ArrayList;
 import logica.Importado;
 import logica.Nacional;
+import logica.Producto;
 
 /**
  *
  * @author Tiago
  */
 public class IngresoArticulo extends javax.swing.JFrame {
-    public static ArrayList<Nacional> datosArticuloNacional=new ArrayList();
-    public static ArrayList<Importado> datosArticuloImportado=new ArrayList();
+
     /**
      * Creates new form IngresoArticulo
      */
-    public IngresoArticulo() {
+    private Producto listaArticulos;
+
+    public IngresoArticulo(Producto listaProducto) {
+        listaArticulos = listaProducto;
         initComponents();
         this.setTitle("Ingresar Articulo");
         this.setLocationRelativeTo(null);
+        btnGroupNacImp.add(checkBoxNacional);
+        btnGroupNacImp.add(checkBoxImportado);
         panelNacional.setVisible(false);
         panelImportado.setVisible(false);
-        
     }
 
     /**
@@ -37,32 +40,21 @@ public class IngresoArticulo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
-        buttonGroup8 = new javax.swing.ButtonGroup();
-        buttonGroup9 = new javax.swing.ButtonGroup();
-        buttonGroup10 = new javax.swing.ButtonGroup();
-        buttonGroup11 = new javax.swing.ButtonGroup();
-        buttonGroup12 = new javax.swing.ButtonGroup();
-        buttonGroup13 = new javax.swing.ButtonGroup();
-        buttonGroup14 = new javax.swing.ButtonGroup();
+        btnGroupNacImp = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
-        nombreTexto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        codigoTexto = new javax.swing.JTextField();
-        precioCostoTexto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        JTextFieldNombre = new javax.swing.JTextField();
+        jLabelCodigo = new javax.swing.JLabel();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jLabelPrecio = new javax.swing.JLabel();
+        jTextFieldCost = new javax.swing.JTextField();
+        jLabelUnidades = new javax.swing.JLabel();
         unidadesTexto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         btnIngresarArticulo = new javax.swing.JButton();
         ingresoArticuloVolver = new javax.swing.JButton();
+        checkBoxImportado = new javax.swing.JCheckBox();
+        checkBoxNacional = new javax.swing.JCheckBox();
         panelImportado = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -72,25 +64,28 @@ public class IngresoArticulo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         departamentoTexto = new javax.swing.JTextField();
         subsidioCheckBox = new javax.swing.JCheckBox();
-        panelImportadoCheckBox = new javax.swing.JCheckBox();
-        panelNacionalCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(300, 500));
-        setPreferredSize(new java.awt.Dimension(500, 575));
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel4.setText("unidades disponibles:");
+        jLabelTitulo.setFont(new java.awt.Font("Gill Sans Nova Cond XBd", 0, 14)); // NOI18N
+        jLabelTitulo.setText("INGRESE LAS CARACTERÍSTICAS DEL ARTÍCULO");
 
-        jLabel3.setText("precio costo:");
+        jLabelNombre.setText("nombre:");
 
-        jLabel2.setText("nombre:");
+        JTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNombreActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("código:");
+        jLabelCodigo.setText("código:");
 
-        jLabel5.setFont(new java.awt.Font("Gill Sans Nova Cond XBd", 0, 14)); // NOI18N
-        jLabel5.setText("INGRESE LAS CARACTERÍSTICAS DEL ARTÍCULO");
+        jLabelPrecio.setText("precio costo:");
+
+        jLabelUnidades.setText("unidades disponibles:");
 
         btnIngresarArticulo.setText("Ingresar Artículo");
         btnIngresarArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +101,23 @@ public class IngresoArticulo extends javax.swing.JFrame {
             }
         });
 
+        checkBoxImportado.setText("Importado");
+        checkBoxImportado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxImportadoActionPerformed(evt);
+            }
+        });
+
+        checkBoxNacional.setText("Nacional");
+        checkBoxNacional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxNacionalActionPerformed(evt);
+            }
+        });
+
+        panelImportado.setBackground(new java.awt.Color(204, 255, 255));
         panelImportado.setPreferredSize(new java.awt.Dimension(188, 103));
+        panelImportado.setVerifyInputWhenFocusTarget(false);
 
         jLabel6.setText("Año importado:");
 
@@ -134,12 +145,14 @@ public class IngresoArticulo extends javax.swing.JFrame {
                 .addGroup(panelImportadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(añoImportadoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(panelImportadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(impuestoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
+
+        panelNacional.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel8.setText("Departamento:");
 
@@ -183,20 +196,6 @@ public class IngresoArticulo extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        panelImportadoCheckBox.setText("Importado");
-        panelImportadoCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                panelImportadoCheckBoxActionPerformed(evt);
-            }
-        });
-
-        panelNacionalCheckBox.setText("Nacional");
-        panelNacionalCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                panelNacionalCheckBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -205,21 +204,18 @@ public class IngresoArticulo extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(19, 19, 19)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(unidadesTexto, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(codigoTexto)
-                                    .addComponent(nombreTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                    .addComponent(precioCostoTexto)))
-                            .addComponent(jLabel5))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelUnidades)
+                            .addComponent(jLabelCodigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(unidadesTexto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldCodigo)
+                            .addComponent(JTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCost))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(ingresoArticuloVolver)
@@ -234,36 +230,40 @@ public class IngresoArticulo extends javax.swing.JFrame {
                         .addGap(23, 23, 23))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addComponent(panelImportadoCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelNacionalCheckBox)
-                .addGap(84, 84, 84))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelTitulo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(checkBoxImportado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(checkBoxNacional)
+                        .addGap(84, 84, 84))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nombreTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelNombre)
+                    .addComponent(JTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(codigoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCodigo)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(precioCostoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelPrecio)
+                    .addComponent(jTextFieldCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(unidadesTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabelUnidades))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelImportadoCheckBox)
-                    .addComponent(panelNacionalCheckBox))
+                    .addComponent(checkBoxImportado)
+                    .addComponent(checkBoxNacional))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelImportado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,60 +290,55 @@ public class IngresoArticulo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
-        if(panelNacionalCheckBox.isSelected()){
-            int codigo=Integer.parseInt(codigoTexto.getText());
-            String nombre=nombreTexto.getText();
-            double precioCosto=Double.parseDouble(precioCostoTexto.getText());
-            int unidades=Integer.parseInt(unidadesTexto.getText());
-            String departamento=departamentoTexto.getText();
-            if(subsidioCheckBox.isSelected()){
-                boolean subsidio=true;
-                Nacional nuevoArticuloNacional=new Nacional(departamento,subsidio,codigo,nombre,precioCosto,unidades);
-                datosArticuloNacional.add(nuevoArticuloNacional);
-            }else{
-                
-                boolean subsidio=false;
-                Nacional nuevoArticuloNacional=new Nacional(departamento,subsidio,codigo,nombre,precioCosto,unidades);
-                datosArticuloNacional.add(nuevoArticuloNacional);
+        if (checkBoxNacional.isSelected()) {
+            int codigo = Integer.parseInt(jTextFieldCodigo.getText());
+            String nombre = JTextFieldNombre.getText();
+            double precioCosto = Double.parseDouble(jTextFieldCost.getText());
+            int unidades = Integer.parseInt(unidadesTexto.getText());
+            String departamento = departamentoTexto.getText();
+            if (subsidioCheckBox.isSelected()) {
+                boolean subsidio = true;
+                Nacional nuevoArticuloNacional = new Nacional(departamento, subsidio, codigo, nombre, precioCosto, unidades);
+                listaArticulos.añadirArticulo(nuevoArticuloNacional);
+            } else {
+
+                boolean subsidio = false;
+                Nacional nuevoArticuloNacional = new Nacional(departamento, subsidio, codigo, nombre, precioCosto, unidades);
+                listaArticulos.añadirArticulo(nuevoArticuloNacional);
             }
-        }else if(panelImportadoCheckBox.isSelected()){
-            int codigo=Integer.parseInt(codigoTexto.getText());
-            String nombre=nombreTexto.getText();
-            double precioCosto=Double.parseDouble(precioCostoTexto.getText());
-            int unidades=Integer.parseInt(unidadesTexto.getText());
-            String departamento=departamentoTexto.getText();
-            int añoImportacion=Integer.parseInt(añoImportadoTexto.getText());
-            double impuesto=Double.parseDouble(impuestoTexto.getText());
-            Importado nuevoArticuloImportado=new Importado(añoImportacion,impuesto,codigo,nombre,precioCosto,unidades);
-            datosArticuloImportado.add(nuevoArticuloImportado);
+        } else if (checkBoxImportado.isSelected()) {
+            int codigo = Integer.parseInt(jTextFieldCodigo.getText());
+            String nombre = JTextFieldNombre.getText();
+            double precioCosto = Double.parseDouble(jTextFieldCost.getText());
+            int unidades = Integer.parseInt(unidadesTexto.getText());
+            int añoImportacion = Integer.parseInt(añoImportadoTexto.getText());
+            double impuesto = Double.parseDouble(impuestoTexto.getText());
+            Importado nuevoArticuloImportado = new Importado(añoImportacion, impuesto, codigo, nombre, precioCosto, unidades);
+            listaArticulos.añadirArticulo(nuevoArticuloImportado);          
         }
-        System.out.println(datosArticuloNacional.toString());//prueba
-        System.out.println(datosArticuloImportado.toString());//prueba
+       
     }//GEN-LAST:event_btnIngresarArticuloActionPerformed
 
     private void ingresoArticuloVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoArticuloVolverActionPerformed
-        Principal principal=new Principal();
+        Principal principal = new Principal();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ingresoArticuloVolverActionPerformed
 
-    private void panelNacionalCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelNacionalCheckBoxActionPerformed
-        if(panelNacionalCheckBox.isSelected()){
-            panelNacional.setVisible(true);
-        }else{
-            panelNacional.setVisible(false);
-        }
-            
-            
-    }//GEN-LAST:event_panelNacionalCheckBoxActionPerformed
-
-    private void panelImportadoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelImportadoCheckBoxActionPerformed
-        if(panelImportadoCheckBox.isSelected()){
-            panelImportado.setVisible(true);
-        }else{
+    private void checkBoxNacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxNacionalActionPerformed
+        if (checkBoxNacional.isSelected()) {
             panelImportado.setVisible(false);
+            panelNacional.setVisible(true);
         }
-    }//GEN-LAST:event_panelImportadoCheckBoxActionPerformed
+    }//GEN-LAST:event_checkBoxNacionalActionPerformed
+
+    private void checkBoxImportadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxImportadoActionPerformed
+
+        if (checkBoxImportado.isSelected()) {
+            panelNacional.setVisible(false);
+            panelImportado.setVisible(true);
+        }
+    }//GEN-LAST:event_checkBoxImportadoActionPerformed
 
     private void departamentoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departamentoTextoActionPerformed
         // TODO add your handling code here:
@@ -353,77 +348,69 @@ public class IngresoArticulo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_subsidioCheckBoxActionPerformed
 
+    private void JTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new IngresoArticulo().setVisible(true);
+//            }
+//        });
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IngresoArticulo().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JTextFieldNombre;
     private javax.swing.JTextField añoImportadoTexto;
+    private javax.swing.ButtonGroup btnGroupNacImp;
     private javax.swing.JButton btnIngresarArticulo;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup10;
-    private javax.swing.ButtonGroup buttonGroup11;
-    private javax.swing.ButtonGroup buttonGroup12;
-    private javax.swing.ButtonGroup buttonGroup13;
-    private javax.swing.ButtonGroup buttonGroup14;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
-    private javax.swing.ButtonGroup buttonGroup8;
-    private javax.swing.ButtonGroup buttonGroup9;
-    private javax.swing.JTextField codigoTexto;
+    private javax.swing.JCheckBox checkBoxImportado;
+    private javax.swing.JCheckBox checkBoxNacional;
     private javax.swing.JTextField departamentoTexto;
     private javax.swing.JTextField impuestoTexto;
     private javax.swing.JButton ingresoArticuloVolver;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelCodigo;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelUnidades;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField nombreTexto;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldCost;
     private javax.swing.JPanel panelImportado;
-    private javax.swing.JCheckBox panelImportadoCheckBox;
     private javax.swing.JPanel panelNacional;
-    private javax.swing.JCheckBox panelNacionalCheckBox;
-    private javax.swing.JTextField precioCostoTexto;
     private javax.swing.JCheckBox subsidioCheckBox;
     private javax.swing.JTextField unidadesTexto;
     // End of variables declaration//GEN-END:variables

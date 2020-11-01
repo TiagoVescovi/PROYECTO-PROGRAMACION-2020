@@ -1,12 +1,10 @@
 package logica;
 
-import java.util.ArrayList;
 
 
 public class Cliente extends Persona{
     private boolean preferencial;
-    
-
+    //private ArrayList<Persona> lista = new ArrayList();
     public Cliente(boolean preferencial, String CI, String apellido) {
         super(CI, apellido);
         this.preferencial = preferencial;

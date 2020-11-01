@@ -4,19 +4,18 @@
  * and open the template in the editor.
  */
 package grafica;
-import java.util.ArrayList;
 import logica.Cliente;
 /**
  *
  * @author Tiago
  */
 public class RegistroCliente extends javax.swing.JFrame {
-    public static ArrayList<Cliente> datosClientes=new ArrayList();
-    private int posicion0=0;
+    
     
     /**
      * Creates new form RegistroCliente
      */
+    
     public RegistroCliente() {
         initComponents();
         this.setTitle("Registrar Cliente");
@@ -160,13 +159,8 @@ public class RegistroCliente extends javax.swing.JFrame {
         String CI=textoCI.getText();
         String apellido=textoApellido.getText();
         Cliente nuevoCliente=new Cliente(preferencial,CI,apellido);
-        datosClientes.add(nuevoCliente);
-      
+        //datosClientes.add(nuevoCliente);
 
-
-    
-        System.out.println(datosClientes.toString());
-        
         
     }//GEN-LAST:event_btnIngresarArticuloActionPerformed
 

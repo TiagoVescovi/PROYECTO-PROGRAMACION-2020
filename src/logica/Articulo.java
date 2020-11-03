@@ -4,15 +4,15 @@ package logica;
 public class Articulo {
 
 // Atributos de nuestro Objeto de tipo Articulo
-    private int codigo;
     private String nombre;
+    private int codigo;
     private double precioCosto;
     private int unidades;
 
 //Construcores
     public Articulo() {
     }
-    public Articulo(int codigo, String nombre, double precioCosto, int unidades) {
+    public Articulo(String nombre,int codigo,  double precioCosto, int unidades) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precioCosto = precioCosto;
@@ -61,7 +61,7 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo:" + "codigo: " + codigo + ", nombre: " + nombre + ", precioCosto: " + precioCosto + ", unidades: " + unidades;
+        return nombre+"_______ x"+unidades+" _____"+precioCosto;
     }
 
 }

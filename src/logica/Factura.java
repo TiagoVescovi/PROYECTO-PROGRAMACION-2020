@@ -1,25 +1,31 @@
 package logica;
 
+import java.util.ArrayList;
+
 public class Factura {
 
     private Fecha realizada;
     private Empleado vendedor;
     private Cliente comprador;
-    private Producto venta; //guarda articulos comprados
+    private ArrayList<Articulo> listaFactura = new ArrayList();
 
-    public Factura(Producto venta, Fecha realizada, Empleado vendedor, Cliente comprador) {
-        this.venta=venta;
+    public Factura() {
+
+    }
+
+    public Factura(ArrayList<Articulo> listaFactura, Fecha realizada,
+            Empleado vendedor, Cliente comprador) {
         this.realizada = realizada;
         this.vendedor = vendedor;
         this.comprador = comprador;
     }
 
-    public Producto getVenta() {
-        return venta;
+    public ArrayList<Articulo> getListaFactura() {
+        return listaFactura;
     }
 
-    public void setVenta(Producto venta) {
-        this.venta = venta;
+    public void setListaFactura(ArrayList<Articulo> listaFactura) {
+        this.listaFactura = listaFactura;
     }
 
     public Fecha getRealizada() {
@@ -45,25 +51,14 @@ public class Factura {
     public void setComprador(Cliente comprador) {
         this.comprador = comprador;
     }
-//
-//    public boolean pertenece(Articulo a) {
-//        for (int i = 0; i < venta.size(); i++) {
-//            if (listav.get(i).getCodigo() == a.getCodigo()) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public void añadirArticulo(Articulo art) {
-//        if (!pertenece(art)) {
-//            listaFactura.add(art);
-//        } else {
-//            System.out.println("Este articulo ya existe"); //JOptionPanel
-//        }
-//    }
-//
-//    public void eliminarFactura() {
-//        listaFactura.clear();
-//    }
+
+    @Override
+    public String toString() {
+        String lista = "";
+        for (int i = 0; i < listaFactura.size(); i++) {
+            lista = lista + "\n" + listaFactura.get(i);
+        }
+        return lista;
+    }
+    
 }

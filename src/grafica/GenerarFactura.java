@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafica;
 
-import java.time.LocalDate;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import logica.Articulo;
+import logica.Cliente;
+import logica.Empleado;
 import logica.Factura;
 import logica.Fecha;
-import logica.Producto;
+import logica.Sistema;
 
 /**
  *
@@ -20,14 +19,14 @@ public class GenerarFactura extends javax.swing.JFrame {
      * Creates new form GenerarFactura
      */
     Factura nuevaFactura;
-    Producto liFactura;
-    
+    Sistema sFactura;
 
-    public GenerarFactura(Producto listaProducto) {
+    public GenerarFactura(Sistema sPrincipal) {
         initComponents();
         this.setTitle("Generar Factura");
         this.setLocationRelativeTo(null);
-        liFactura = listaProducto;
+        sFactura = sPrincipal;
+        nuevaFactura = new Factura();
     }
 
     /**
@@ -52,12 +51,7 @@ public class GenerarFactura extends javax.swing.JFrame {
         generarFactura = new javax.swing.JButton();
         generarFacturaVolver = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
-        btnEmpleado = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        comboBoxMM = new javax.swing.JComboBox<>();
-        comboBoxDD = new javax.swing.JComboBox<>();
-        comboBoxYYYY = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +61,11 @@ public class GenerarFactura extends javax.swing.JFrame {
 
         jLabelUnidades.setText("UNIDADES:");
 
-        jTextFieldUnidades.setText("                ");
+        jTextFieldUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUnidadesActionPerformed(evt);
+            }
+        });
 
         añadirArticulo.setText("añadir artículo");
         añadirArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +85,11 @@ public class GenerarFactura extends javax.swing.JFrame {
         jLabelEmpleado.setText("CI del empleado:");
 
         generarFactura.setText("FINALIZAR COMPRA Y GENERAR FACTURA");
+        generarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarFacturaActionPerformed(evt);
+            }
+        });
 
         generarFacturaVolver.setText("Volver");
         generarFacturaVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -96,23 +99,13 @@ public class GenerarFactura extends javax.swing.JFrame {
         });
 
         btnCliente.setText("Nuevo Cliente");
-
-        btnEmpleado.setText("Nuevo Empleado");
-
-        jLabel1.setText("CARRITO DE COMPRAS DEL SUPERMERCADO BOe");
-
-        jLabel3.setText("fecha de hoy:");
-
-        comboBoxMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------------", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" }));
-        comboBoxMM.addActionListener(new java.awt.event.ActionListener() {
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxMMActionPerformed(evt);
+                btnClienteActionPerformed(evt);
             }
         });
 
-        comboBoxDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        comboBoxYYYY.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        jLabel1.setText("CARRITO DE COMPRAS DEL SUPERMERCADO BOe");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,35 +115,22 @@ public class GenerarFactura extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabelEmpleado)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabelCliente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(40, 40, 40)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(105, 105, 105)
-                                    .addComponent(añadirArticulo)
-                                    .addGap(96, 96, 96)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboBoxMM, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboBoxYYYY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelEmpleado)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(48, 48, 48)
+                                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(añadirArticulo))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(generarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +149,7 @@ public class GenerarFactura extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(jLabel1)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,24 +165,17 @@ public class GenerarFactura extends javax.swing.JFrame {
                     .addComponent(jLabelUnidades)
                     .addComponent(jTextFieldUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxYYYY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
                 .addComponent(añadirArticulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCliente)
                     .addComponent(btnCliente))
-                .addGap(37, 37, 37)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEmpleado)
-                    .addComponent(btnEmpleado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addComponent(jLabelEmpleado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(generarFactura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(generarFacturaVolver)
@@ -213,9 +186,10 @@ public class GenerarFactura extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,39 +200,68 @@ public class GenerarFactura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void generarFacturaVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaVolverActionPerformed
-        int dia=1;
-        String mes= comboBoxMM.getSelectedItem().toString();
-        int año= Integer.valueOf(comboBoxYYYY.getSelectedItem().toString());
-        Fecha fechaFactura= new Fecha(dia, mes, año);
-        
-        //nuevaFactura=new Factura(liFactura,LocalDate,);
-        //Producto venta, Fecha realizada, Empleado vendedor, Cliente comprador
-        Principal principal = new Principal();
+        Principal principal = new Principal(sFactura);
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_generarFacturaVolverActionPerformed
 
     private void añadirArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirArticuloActionPerformed
-
-        int codigoArticuloFactura = Integer.parseInt(jTextFieldCodigo.getText());
+        Articulo art = new Articulo();
+        int codigoArtFac = Integer.parseInt(jTextFieldCodigo.getText());
         int unidadesCompra = Integer.parseInt(jTextFieldUnidades.getText());
-//      String CIClienteArticulo=jTextFieldCliente.getText();
-//        datosArticuloImportado.indexOf(codigoArticuloFactura);
-        if (liFactura.perteneceArticuloPorCodigo(codigoArticuloFactura)) {
-            liFactura.getLista().add(liFactura.buscarArticulo(codigoArticuloFactura));
-        }else{
-            //JOptionPane
+        if (unidadesCompra <= 0) {
+            JOptionPane.showMessageDialog(null, "Por favor, digite unidades válidas",
+                    "Datos no válidos", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (sFactura.perteneceArticuloPorCodigo(codigoArtFac)) {
+                if (unidadesCompra < sFactura.buscarArticulo(codigoArtFac).getUnidades()) {
+                    art = (sFactura.buscarArticulo(codigoArtFac));
+                    nuevaFactura.getListaFactura().add(art);
+                    int index = sFactura.getListaArticulos().indexOf(art);
+                    sFactura.getListaArticulos().get(index).setUnidades(art.getUnidades() - unidadesCompra);
+                    JOptionPane.showMessageDialog(null, nuevaFactura.toString(), "Artículo agregado correctamente", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    System.out.println("hola");
+                    JOptionPane.showMessageDialog(null, "Stock insuficiente", ";(", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Artículo no disponible en stock", "Artículo no encontrado", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
     }//GEN-LAST:event_añadirArticuloActionPerformed
 
     private void jTextFieldClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldClienteActionPerformed
 
-    private void comboBoxMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMMActionPerformed
-        
-    }//GEN-LAST:event_comboBoxMMActionPerformed
+    private void generarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaActionPerformed
+        Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DATE);
+        int mes = c.get(Calendar.MONTH);
+        int año = c.get(Calendar.YEAR);
+        Fecha fechaF = new Fecha(dia, mes, año);
+
+        String CIEmp = jTextFieldEmpleado.getText();
+        Empleado empleadoF = sFactura.buscarEmpleado(CIEmp);
+
+        String CICli = jTextFieldCliente.getText();
+        Cliente clienteF = sFactura.buscarCliente(CICli);
+
+        nuevaFactura = new Factura(nuevaFactura.getListaFactura(), fechaF, empleadoF, clienteF);
+        sFactura.getListaFacturas().add(nuevaFactura);
+
+        MostrarFactura facturaCreada = new MostrarFactura(nuevaFactura);
+        facturaCreada.setVisible(true);
+
+    }//GEN-LAST:event_generarFacturaActionPerformed
+
+    private void jTextFieldUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUnidadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUnidadesActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,14 +301,9 @@ public class GenerarFactura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirArticulo;
     private javax.swing.JButton btnCliente;
-    private javax.swing.JButton btnEmpleado;
-    private javax.swing.JComboBox<String> comboBoxDD;
-    private javax.swing.JComboBox<String> comboBoxMM;
-    private javax.swing.JComboBox<String> comboBoxYYYY;
     private javax.swing.JButton generarFactura;
     private javax.swing.JButton generarFacturaVolver;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelEmpleado;

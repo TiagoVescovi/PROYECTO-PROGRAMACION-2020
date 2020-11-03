@@ -2,25 +2,16 @@ package logica;
 
 public class Empleado extends Persona {
 
-    private Fecha ingreso;
     private int categoria;
-    private String antiguedad;
+    private Fecha antiguedad;
 
-    public Empleado(Fecha ingreso, int categoria, String antiguedad, String CI, String apellido) {
+    public Empleado(Fecha antiguedad, int categoria, String CI, String apellido) {
         super(CI, apellido);
-        this.ingreso = ingreso;
         this.categoria = categoria;
         this.antiguedad = antiguedad;
     }
 
-    public Fecha getIngreso() {
-        return ingreso;
-    }
-
-    public void setIngreso(Fecha ingreso) {
-        this.ingreso = ingreso;
-    }
-
+   
     public int getCategoria() {
         return categoria;
     }
@@ -29,17 +20,13 @@ public class Empleado extends Persona {
         this.categoria = categoria;
     }
 
-    public String getAntiguedad() {
+    public Fecha getAntiguedad() {
         return antiguedad;
     }
 
-    public void setAntiguedad(String antiguedad) {
+    public void setAntiguedad(Fecha antiguedad) {
         this.antiguedad = antiguedad;
     }
-    @Override
-    public String toString() {
-        return "ingreso: "+ingreso+" categoria: "+categoria+" antiguedad: "+antiguedad+" CI: "+CI+" apellido: "+apellido;
-    }
     
-    }
+}
 

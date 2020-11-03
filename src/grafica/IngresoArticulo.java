@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafica;
 
+import javax.swing.JOptionPane;
+import logica.Articulo;
 import logica.Importado;
 import logica.Nacional;
-import logica.Producto;
+import logica.Sistema;
 
 /**
  *
@@ -18,10 +15,9 @@ public class IngresoArticulo extends javax.swing.JFrame {
     /**
      * Creates new form IngresoArticulo
      */
-    private Producto listaArticulos;
+    private Sistema sArticulo;
 
-    public IngresoArticulo(Producto listaProducto) {
-        listaArticulos = listaProducto;
+    public IngresoArticulo() {
         initComponents();
         this.setTitle("Ingresar Articulo");
         this.setLocationRelativeTo(null);
@@ -29,6 +25,19 @@ public class IngresoArticulo extends javax.swing.JFrame {
         btnGroupNacImp.add(checkBoxImportado);
         panelNacional.setVisible(false);
         panelImportado.setVisible(false);
+        btnIngresarArticulo.setEnabled(false);
+    }
+
+    public IngresoArticulo(Sistema sPrincipal) {
+        sArticulo = sPrincipal;
+        initComponents();
+        this.setTitle("Ingresar Articulo");
+        this.setLocationRelativeTo(null);
+        btnGroupNacImp.add(checkBoxNacional);
+        btnGroupNacImp.add(checkBoxImportado);
+        panelNacional.setVisible(false);
+        panelImportado.setVisible(false);
+        btnIngresarArticulo.setEnabled(false);
     }
 
     /**
@@ -62,8 +71,8 @@ public class IngresoArticulo extends javax.swing.JFrame {
         impuestoTexto = new javax.swing.JTextField();
         panelNacional = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        departamentoTexto = new javax.swing.JTextField();
         subsidioCheckBox = new javax.swing.JCheckBox();
+        comboBoxDepartamentos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(300, 500));
@@ -156,12 +165,6 @@ public class IngresoArticulo extends javax.swing.JFrame {
 
         jLabel8.setText("Departamento:");
 
-        departamentoTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                departamentoTextoActionPerformed(evt);
-            }
-        });
-
         subsidioCheckBox.setText("Subsidio");
         subsidioCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,28 +172,31 @@ public class IngresoArticulo extends javax.swing.JFrame {
             }
         });
 
+        comboBoxDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artigas", "Canelones", "Cerro Largo", "Colonia", "Durazno", "Flores", "Florida", "Lavalleja", "Maldonado", "Montevideo", "Paysandú", "Río Negro", "Rivera", "Rocha", "Salto", "San José", "Soriano", "Tacuarembó", "Treinta y Tres" }));
+
         javax.swing.GroupLayout panelNacionalLayout = new javax.swing.GroupLayout(panelNacional);
         panelNacional.setLayout(panelNacionalLayout);
         panelNacionalLayout.setHorizontalGroup(
             panelNacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNacionalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(departamentoTexto)
-                .addContainerGap())
-            .addGroup(panelNacionalLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(subsidioCheckBox)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(panelNacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNacionalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboBoxDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelNacionalLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(subsidioCheckBox)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelNacionalLayout.setVerticalGroup(
             panelNacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNacionalLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addGroup(panelNacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(departamentoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(subsidioCheckBox)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -268,7 +274,7 @@ public class IngresoArticulo extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelImportado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelNacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngresarArticulo)
                     .addComponent(ingresoArticuloVolver))
@@ -290,37 +296,40 @@ public class IngresoArticulo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
-        if (checkBoxNacional.isSelected()) {
-            int codigo = Integer.parseInt(jTextFieldCodigo.getText());
-            String nombre = JTextFieldNombre.getText();
-            double precioCosto = Double.parseDouble(jTextFieldCost.getText());
-            int unidades = Integer.parseInt(unidadesTexto.getText());
-            String departamento = departamentoTexto.getText();
-            if (subsidioCheckBox.isSelected()) {
-                boolean subsidio = true;
-                Nacional nuevoArticuloNacional = new Nacional(departamento, subsidio, codigo, nombre, precioCosto, unidades);
-                listaArticulos.añadirArticulo(nuevoArticuloNacional);
-            } else {
+        
+        String nombre = JTextFieldNombre.getText();
+        int codigo = Integer.parseInt(jTextFieldCodigo.getText());
+        double precioCosto = Double.parseDouble(jTextFieldCost.getText());
+        int unidades = Integer.parseInt(unidadesTexto.getText());
 
-                boolean subsidio = false;
-                Nacional nuevoArticuloNacional = new Nacional(departamento, subsidio, codigo, nombre, precioCosto, unidades);
-                listaArticulos.añadirArticulo(nuevoArticuloNacional);
+        if (checkBoxNacional.isSelected()) {
+            String departamento = comboBoxDepartamentos.getSelectedItem().toString();
+            boolean subsidio;
+            Nacional articuloNacional;
+
+            if (subsidioCheckBox.isSelected()) {
+                subsidio = true;
+            } else {
+                subsidio = false;
             }
+            articuloNacional = new Nacional(departamento, subsidio, nombre, codigo, precioCosto, unidades);
+            articuloNacional.precioVenta();
+            sArticulo.añadirArticulo(articuloNacional);
+            JOptionPane.showMessageDialog(null, articuloNacional, "Artículo ingresado exitosamente", JOptionPane.INFORMATION_MESSAGE);
+            
         } else if (checkBoxImportado.isSelected()) {
-            int codigo = Integer.parseInt(jTextFieldCodigo.getText());
-            String nombre = JTextFieldNombre.getText();
-            double precioCosto = Double.parseDouble(jTextFieldCost.getText());
-            int unidades = Integer.parseInt(unidadesTexto.getText());
+            Importado articuloImportado;
             int añoImportacion = Integer.parseInt(añoImportadoTexto.getText());
             double impuesto = Double.parseDouble(impuestoTexto.getText());
-            Importado nuevoArticuloImportado = new Importado(añoImportacion, impuesto, codigo, nombre, precioCosto, unidades);
-            listaArticulos.añadirArticulo(nuevoArticuloImportado);          
+            articuloImportado = new Importado(añoImportacion, impuesto, nombre, codigo, precioCosto, unidades);
+            articuloImportado.precioVenta();
+            sArticulo.añadirArticulo(articuloImportado);
         }
-       
+
     }//GEN-LAST:event_btnIngresarArticuloActionPerformed
 
     private void ingresoArticuloVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoArticuloVolverActionPerformed
-        Principal principal = new Principal();
+        Principal principal = new Principal(sArticulo);
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ingresoArticuloVolverActionPerformed
@@ -329,20 +338,17 @@ public class IngresoArticulo extends javax.swing.JFrame {
         if (checkBoxNacional.isSelected()) {
             panelImportado.setVisible(false);
             panelNacional.setVisible(true);
+            btnIngresarArticulo.setEnabled(true);
         }
     }//GEN-LAST:event_checkBoxNacionalActionPerformed
 
     private void checkBoxImportadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxImportadoActionPerformed
-
         if (checkBoxImportado.isSelected()) {
             panelNacional.setVisible(false);
             panelImportado.setVisible(true);
+            btnIngresarArticulo.setEnabled(true);
         }
     }//GEN-LAST:event_checkBoxImportadoActionPerformed
-
-    private void departamentoTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departamentoTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_departamentoTextoActionPerformed
 
     private void subsidioCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subsidioCheckBoxActionPerformed
         // TODO add your handling code here:
@@ -352,42 +358,49 @@ public class IngresoArticulo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldNombreActionPerformed
 
+    public void verificaDatos() {
+
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(IngresoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new IngresoArticulo().setVisible(true);
-//            }
-//        });
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(IngresoArticulo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(IngresoArticulo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(IngresoArticulo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(IngresoArticulo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new IngresoArticulo().setVisible(true);
+            }
+        });
 
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextFieldNombre;
     private javax.swing.JTextField añoImportadoTexto;
@@ -395,7 +408,7 @@ public class IngresoArticulo extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresarArticulo;
     private javax.swing.JCheckBox checkBoxImportado;
     private javax.swing.JCheckBox checkBoxNacional;
-    private javax.swing.JTextField departamentoTexto;
+    private javax.swing.JComboBox<String> comboBoxDepartamentos;
     private javax.swing.JTextField impuestoTexto;
     private javax.swing.JButton ingresoArticuloVolver;
     private javax.swing.JLabel jLabel6;

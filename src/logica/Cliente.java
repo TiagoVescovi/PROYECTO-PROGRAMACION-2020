@@ -1,7 +1,5 @@
 package logica;
 
-
-
 public class Cliente extends Persona{
     private boolean preferencial;
     //private ArrayList<Persona> lista = new ArrayList();
@@ -17,9 +15,5 @@ public class Cliente extends Persona{
     public void setPreferencial(boolean preferencial) {
         this.preferencial = preferencial;
     }
-    @Override//prueba
-    public String toString() {
-        return "cedula:" + CI +" apellido:"+ apellido + "preferencial:" + preferencial;
-        
-    }
+    
 }

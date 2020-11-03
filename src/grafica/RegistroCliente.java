@@ -1,29 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafica;
+
+import javax.swing.JOptionPane;
 import logica.Cliente;
+import logica.Sistema;
+
 /**
  *
  * @author Tiago
  */
 public class RegistroCliente extends javax.swing.JFrame {
-    
-    
+
     /**
      * Creates new form RegistroCliente
      */
-    
+    private Sistema sCliente;
+
     public RegistroCliente() {
         initComponents();
         this.setTitle("Registrar Cliente");
         this.setLocationRelativeTo(null);
-        
-        
     }
-    
+
+    public RegistroCliente(Sistema sPrincipal) {
+        initComponents();
+        this.setTitle("Registrar Cliente");
+        this.setLocationRelativeTo(null);
+        sCliente = sPrincipal;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +43,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnIngresarArticulo = new javax.swing.JButton();
+        btnIngreseEmpleado = new javax.swing.JButton();
         preferencialCheckBox = new javax.swing.JCheckBox();
         registroClienteVolver = new javax.swing.JButton();
 
@@ -60,10 +64,10 @@ public class RegistroCliente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Gill Sans Nova Cond XBd", 0, 14)); // NOI18N
         jLabel5.setText("REGISTRO DE CLIENTE");
 
-        btnIngresarArticulo.setText("Ingresar Empleado");
-        btnIngresarArticulo.addActionListener(new java.awt.event.ActionListener() {
+        btnIngreseEmpleado.setText("Ingresar Empleado");
+        btnIngreseEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarArticuloActionPerformed(evt);
+                btnIngreseEmpleadoActionPerformed(evt);
             }
         });
 
@@ -86,8 +90,8 @@ public class RegistroCliente extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnIngresarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE)
+                .addComponent(btnIngreseEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +133,7 @@ public class RegistroCliente extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addComponent(preferencialCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(btnIngresarArticulo)
+                .addComponent(btnIngreseEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registroClienteVolver)
                 .addGap(5, 5, 5))
@@ -149,27 +153,30 @@ public class RegistroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
-        boolean preferencial;
-        if(preferencialCheckBox.isSelected()){
-            preferencial=true;
-        }else{
-            preferencial=false;
-        }       
-        String CI=textoCI.getText();
-        String apellido=textoApellido.getText();
-        Cliente nuevoCliente=new Cliente(preferencial,CI,apellido);
-        //datosClientes.add(nuevoCliente);
+    private void btnIngreseEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngreseEmpleadoActionPerformed
 
-        
-    }//GEN-LAST:event_btnIngresarArticuloActionPerformed
+        String CI = textoCI.getText();
+        String apellido = textoApellido.getText();
+        boolean preferencial = preferencialCheckBox.isSelected();
+        Cliente nuevoCliente = new Cliente(preferencial, CI, apellido);
+
+        if (!sCliente.perteneceCliente(nuevoCliente)) {
+            sCliente.añadirCliente(nuevoCliente);
+            JOptionPane.showMessageDialog(null, nuevoCliente.toString(),
+                    "Cliente agregado exitosamente", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(null, nuevoCliente.toString(),
+                    "Este cliente ya existe", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngreseEmpleadoActionPerformed
 
     private void textoCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCIActionPerformed
-        
+
     }//GEN-LAST:event_textoCIActionPerformed
 
     private void registroClienteVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroClienteVolverActionPerformed
-        Principal principal=new Principal();
+        Principal principal = new Principal(sCliente);
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroClienteVolverActionPerformed
@@ -212,9 +219,9 @@ public class RegistroCliente extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresarArticulo;
+    private javax.swing.JButton btnIngreseEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

@@ -9,9 +9,9 @@ public class Nacional extends Articulo {
         return departamento;
     }
 
-    public Nacional(String departamento, boolean subsidio, int codigo, 
-            String nombre, double precioCosto, int unidades) {
-        super(codigo, nombre, precioCosto, unidades);
+    public Nacional(String departamento, boolean subsidio, String nombre,
+            int codigo,double precioCosto, int unidades) {
+        super(nombre,codigo,precioCosto, unidades);
         this.departamento = departamento;
         this.subsidio = subsidio;
     }

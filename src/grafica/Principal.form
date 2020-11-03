@@ -55,9 +55,9 @@
                           <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="registroEmpleado" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ingresoArticulo" alignment="1" pref="150" max="32767" attributes="0"/>
+                              <Component id="btnIngresarArticulo" alignment="1" pref="150" max="32767" attributes="0"/>
                               <Component id="registroCliente" alignment="1" max="32767" attributes="0"/>
-                              <Component id="generarFactura" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnGenerarFactura" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -87,11 +87,11 @@
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="registroCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="ingresoArticulo" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnIngresarArticulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="registroEmpleado" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="generarFactura" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnGenerarFactura" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="salir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="49" max="32767" attributes="0"/>
@@ -100,12 +100,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="ingresoArticulo">
+        <Component class="javax.swing.JButton" name="btnIngresarArticulo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresar Art&#xed;culo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoArticuloActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarArticuloActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="registroEmpleado">
@@ -124,12 +124,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroClienteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="generarFactura">
+        <Component class="javax.swing.JButton" name="btnGenerarFactura">
           <Properties>
             <Property name="text" type="java.lang.String" value="GENERAR FACTURA"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generarFacturaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenerarFacturaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">

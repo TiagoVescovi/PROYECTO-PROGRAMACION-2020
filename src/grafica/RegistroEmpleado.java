@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grafica;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 import logica.Empleado;
 import logica.Fecha;
+import logica.Sistema;
+
 /**
  *
  * @author Tiago
  */
 public class RegistroEmpleado extends javax.swing.JFrame {
-    public static ArrayList<Empleado> datosEmpleado=new ArrayList();
+
+    Sistema sEmpleado;
+
     /**
      * Creates new form RegistroEmpleado
      */
@@ -24,6 +21,13 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Registrar Empleado");
         this.setLocationRelativeTo(null);
+    }
+
+    public RegistroEmpleado(Sistema sPrincipal) {
+        initComponents();
+        this.setTitle("Registrar Empleado");
+        this.setLocationRelativeTo(null);
+        sEmpleado = sPrincipal;
     }
 
     /**
@@ -40,18 +44,15 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         apellidoTexto = new javax.swing.JTextField();
-        ingresoDiaTexto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        categoriaTexto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnIngresarArticulo = new javax.swing.JButton();
+        btnIngresarEmpleado = new javax.swing.JButton();
         registroEmpleadoVolver = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        ingresoMesTexto = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        ingresoAñoTexto = new javax.swing.JTextField();
+        comboBoxCategoria = new javax.swing.JComboBox<>();
+        labelDia = new javax.swing.JTextField();
+        labelMes = new javax.swing.JTextField();
+        labelAño = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,12 +62,6 @@ public class RegistroEmpleado extends javax.swing.JFrame {
 
         jLabel3.setText("fecha de ingreso:");
 
-        ingresoDiaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresoDiaTextoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Apellido:");
 
         jLabel1.setText("CI:");
@@ -74,10 +69,10 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Gill Sans Nova Cond XBd", 0, 14)); // NOI18N
         jLabel5.setText("REGISTRO DE EMPLEADO");
 
-        btnIngresarArticulo.setText("Ingresar Empleado");
-        btnIngresarArticulo.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresarEmpleado.setText("Ingresar Empleado");
+        btnIngresarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarArticuloActionPerformed(evt);
+                btnIngresarEmpleadoActionPerformed(evt);
             }
         });
 
@@ -88,11 +83,14 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("dd:");
+        comboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jefe de vendedores", "Vendedor senior", "Vendedor junior", "Cadete" }));
+        comboBoxCategoria.setSelectedItem("--------");
 
-        jLabel7.setText("MM");
+        labelDia.setText("DD");
 
-        jLabel8.setText("yyyy");
+        labelMes.setText("MM");
+
+        labelAño.setText("YYYY");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -107,11 +105,11 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(categoriaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(btnIngresarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnIngresarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jLabel5))
@@ -128,19 +126,13 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ingresoDiaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelMes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ingresoMesTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ingresoAñoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(labelAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,19 +151,16 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ingresoDiaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(ingresoMesTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(ingresoAñoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(categoriaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4)
+                        .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(btnIngresarArticulo)
+                .addComponent(btnIngresarEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registroEmpleadoVolver)
                 .addGap(5, 5, 5))
@@ -191,48 +180,55 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarArticuloActionPerformed
-        
-
-//        String calculoDia="0";
-//        String calculoMes="0";
-//        int dia=Integer.parseInt(ingresoDiaTexto.getText());
-//        String mes=Integer.parseInt(ingresoMesTexto.getText());
-//        int año=Integer.parseInt(ingresoAñoTexto.getText());
-//        Fecha ingreso=new Fecha(dia,mes,año);
-//        if(dia<10){
-//            calculoDia="0"+dia;
-//        }else{
-//            calculoDia=String.valueOf(dia);
-//        }
-//        if(mes<10){
-//            calculoMes="0"+mes;
-//        }else{
-//            calculoMes=String.valueOf(mes);
-//        }
-//        String antiguedadCalculo=calculoDia+"/"+calculoMes+"/"+año;
-//        DateTimeFormatter date=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        LocalDate fechaingreso=LocalDate.parse(antiguedadCalculo, date);
-//        LocalDate fechaactual=LocalDate.now();
-//        Period periodo=Period.between(fechaingreso, fechaactual);
-//        String antiguedad=(periodo.getYears()+" años, "+periodo.getMonths()+" meses y "+periodo.getDays()+" días");       
-//        int categoria=Integer.parseInt(categoriaTexto.getText());
-//        String CI=CITexto.getText();
-//        String apellido=apellidoTexto.getText();
-//        Empleado nuevoEmpleado=new Empleado(ingreso,categoria,antiguedad,CI,apellido);
-//        datosEmpleado.add(nuevoEmpleado);
-//        System.out.println(datosEmpleado.toString());
-    }//GEN-LAST:event_btnIngresarArticuloActionPerformed
-
     private void registroEmpleadoVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoVolverActionPerformed
-        Principal principal=new Principal();
+        Principal principal = new Principal(sEmpleado);
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroEmpleadoVolverActionPerformed
 
-    private void ingresoDiaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoDiaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresoDiaTextoActionPerformed
+    private void btnIngresarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarEmpleadoActionPerformed
+
+        String CI = CITexto.getText();
+        String apellido = apellidoTexto.getText();
+        int dia = Integer.parseInt(labelDia.getText());
+        int mes = Integer.parseInt(labelMes.getText());
+        int año = Integer.parseInt(labelAño.getText());
+        Fecha antiguedad;
+        Empleado nuevoEmpleado;
+        int categoria = comboBoxCategoria.getSelectedIndex() + 1;
+
+        if (verificarFecha(dia, mes, año)) {
+            antiguedad = new Fecha(dia, mes, año);
+
+            nuevoEmpleado = new Empleado(antiguedad, categoria, CI, apellido);
+            sEmpleado.añadirEmpleado(nuevoEmpleado);
+            JOptionPane.showMessageDialog(null, nuevoEmpleado.toString(),
+                    "Registro de empleado exitoso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, digite una fecha válida",
+                    "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngresarEmpleadoActionPerformed
+    public boolean verificarFecha(int dia, int mes, int año) {
+        if (dia <= 31 && mes <= 12 && año < 2020) {
+            switch (dia) {
+                case 29:
+                    if (mes == 2) {
+                        return false;
+                    }
+                    break;
+                case 31:
+                    if (mes % 2 != 0 && mes < 6 || mes % 2 == 0 && mes > 6) {
+                        return true;
+                    }
+                    break;
+                default:
+                    return true;
+
+            }
+        }
+        return false;
+    }
 
     /**
      * @param args the command line arguments
@@ -272,20 +268,17 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CITexto;
     private javax.swing.JTextField apellidoTexto;
-    private javax.swing.JButton btnIngresarArticulo;
-    private javax.swing.JTextField categoriaTexto;
-    private javax.swing.JTextField ingresoAñoTexto;
-    private javax.swing.JTextField ingresoDiaTexto;
-    private javax.swing.JTextField ingresoMesTexto;
+    private javax.swing.JButton btnIngresarEmpleado;
+    private javax.swing.JComboBox<String> comboBoxCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField labelAño;
+    private javax.swing.JTextField labelDia;
+    private javax.swing.JTextField labelMes;
     private javax.swing.JButton registroEmpleadoVolver;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,8 @@ public class Importado extends Articulo {
     private int  añoImportacion;
     private double impuesto;
 
-    public Importado(int añoImportacion, double impuesto, int codigo, String nombre, double precioCosto, int unidades) {
-        super(codigo, nombre, precioCosto, unidades);
+    public Importado(int añoImportacion, double impuesto,String nombre,int codigo,double precioCosto, int unidades) {
+        super(nombre,codigo,precioCosto, unidades);
         this.añoImportacion = añoImportacion;
         this.impuesto = impuesto;
     }
